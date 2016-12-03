@@ -66,7 +66,7 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	echo "Downloading Mail-in-a-Box $TAG. . ."
 	git clone \
 		-b "$TAG" --depth 1 \
-		"$SOURCE" \
+		https://github.com/matthewhall79/mailinabox \
 		"$HOME/mailinabox" \
 		< /dev/null 2> /dev/null
 
