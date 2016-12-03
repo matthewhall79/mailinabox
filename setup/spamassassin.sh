@@ -133,10 +133,14 @@ EOF
 #
 # Spamassassin will change the access rights back to the defaults, so we must also configure
 # the filemode in the config file.
+#
+# Also increase the score given to mail with a 99.9% Bayesean probability, so
+# that it's very likely to be marked as spam.
 
 tools/editconf.py /etc/spamassassin/local.cf -s \
 	bayes_path="$STORAGE_ROOT/mail/spamassassin/bayes" \
 	bayes_file_mode=0666
+	score BAYES_999  0  0  1.5  1.5
 
 mkdir -p "$STORAGE_ROOT/mail/spamassassin"
 chown -R spampd:spampd "$STORAGE_ROOT/mail/spamassassin"
