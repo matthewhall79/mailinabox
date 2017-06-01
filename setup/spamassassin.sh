@@ -139,7 +139,7 @@ EOF
 
 tools/editconf.py /etc/spamassassin/local.cf -s \
 	bayes_path="$STORAGE_ROOT/mail/spamassassin/bayes" \
-	bayes_file_mode=0666
+	bayes_file_mode=0666 \
 	score BAYES_999  0  0  1.6  1.6
 
 mkdir -p "$STORAGE_ROOT/mail/spamassassin"
