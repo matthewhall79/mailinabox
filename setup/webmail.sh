@@ -34,9 +34,8 @@ PERSISTENT_LOGIN_VERSION=6b3fc450cae23ccb2f393d0ef67aa319e877e435
 HTML5_NOTIFIER_VERSION=4b370e3cd60dabd2f428a26f45b677ad1b7118d5
 CARDDAV_VERSION=3.0.3
 CARDDAV_HASH=d1e3b0d851ffa2c6bd42bf0c04f70d0e1d0d78f8
-THUNDERBIRD_LABELS_VERSION=aa08dfd58f6e308bda514c028d831d4cea5aca3b
 
-UPDATE_KEY=$VERSION:$PERSISTENT_LOGIN_VERSION:$HTML5_NOTIFIER_VERSION:$CARDDAV_VERSION:$THUNDERBIRD_LABELS_VERSION:a
+UPDATE_KEY=$VERSION:$PERSISTENT_LOGIN_VERSION:$HTML5_NOTIFIER_VERSION:$CARDDAV_VERSION
 
 # paths that are often reused.
 RCM_DIR=/usr/local/lib/roundcubemail
@@ -85,9 +84,6 @@ if [ $needs_update == 1 ]; then
 	unzip -q /tmp/carddav.zip -d ${RCM_PLUGIN_DIR}
 	rm -f /tmp/carddav.zip
 
-	# install thunderbird labels plugin
-	git_clone https://github.com/mike-kfed/rcmail-thunderbird-labels.git $THUNDERBIRD_LABELS_VERSION '' /usr/local/lib/roundcubemail/plugins/thunderbird_labels
-
 	# record the version we've installed
 	echo $UPDATE_KEY > ${RCM_DIR}/version
 fi
@@ -130,7 +126,7 @@ cat > $RCM_CONFIG <<EOF;
 \$config['support_url'] = 'https://mailinabox.email/';
 \$config['product_name'] = '$PRIMARY_HOSTNAME Webmail';
 \$config['des_key'] = '$SECRET_KEY';
-\$config['plugins'] = array('html5_notifier', 'archive', 'zipdownload', 'password', 'managesieve', 'jqueryui', 'persistent_login', 'carddav', 'thunderbird_labels');
+\$config['plugins'] = array('html5_notifier', 'archive', 'zipdownload', 'password', 'managesieve', 'jqueryui', 'persistent_login', 'carddav');
 \$config['skin'] = 'larry';
 \$config['login_autocomplete'] = 2;
 \$config['password_charset'] = 'UTF-8';
