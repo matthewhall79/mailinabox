@@ -176,6 +176,8 @@ sed -i "s/#mail_plugins = .*/mail_plugins = \$mail_plugins sieve/" /etc/dovecot/
 # (because then I suppose it might appear to the user as one of their scripts).
 # * `sieve_dir`: Directory for :personal include scripts for the include extension. This
 # is also where the ManageSieve service stores the user's scripts.
+#
+# Also allow a higher number of redirects than the default of 4.
 cat > /etc/dovecot/conf.d/99-local-sieve.conf << EOF;
 plugin {
   sieve_before = /etc/dovecot/sieve-spam.sieve
@@ -183,6 +185,7 @@ plugin {
   sieve_after = $STORAGE_ROOT/mail/sieve/global_after
   sieve = $STORAGE_ROOT/mail/sieve/%d/%n.sieve
   sieve_dir = $STORAGE_ROOT/mail/sieve/%d/%n
+  sieve_max_redirects = 12
 }
 EOF
 
