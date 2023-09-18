@@ -150,7 +150,7 @@ header LOCAL_MATT_AT_ICLOUD ToCc =~ /matt.hall@icloud.com/
 describe LOCAL_MATT_AT_ICLOUD Most mail to my icloud address is spam
 score LOCAL_MATT_AT_ICLOUD 1.0
 
-blocklist_from *@mb.the-advisr.com
+blacklist_from *@*.the-advisr.com
 EOF
 
 mkdir -p "$STORAGE_ROOT/mail/spamassassin"
